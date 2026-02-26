@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Endroid Notes</title>
+  <title>Endroid Notes - Modern Offline Note-Taking App</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
   <!-- SEO Meta Tags -->
-  <meta name="description" content="Endroid Notes is a minimalist, offline-first note-taking app with dark/light themes, live preview, and swipe-to-delete. Perfect for quick thoughts and ideas.">
-  <meta name="keywords" content="notes app, note taking, offline notes, PWA notes, markdown preview, dark mode">
+  <meta name="description" content="Endroid Notes is a beautiful, offline-first note-taking app with Material You 3 amber theming, live Markdown preview, and swipe-to-delete. Perfect for quick thoughts.">
+  <meta name="keywords" content="notes app, note taking, offline notes, PWA notes, markdown preview, dark mode, Material You 3, amber theme">
   <meta name="author" content="Endroid">
   <meta name="robots" content="index, follow">
-  <meta name="theme-color" content="#03dac6">
-  <meta name="msapplication-TileColor" content="#03dac6">
+  <meta name="theme-color" content="#FABD00">
+  <meta name="msapplication-TileColor" content="#FABD00">
   <meta name="application-name" content="Endroid Notes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -23,11 +23,11 @@
   <meta property="og:locale" content="en_US">
 
   <!-- Social Media Sharing Meta Tags (Open Graph) -->
-  <meta property="og:title" content="Endroid Notes - Simple, Beautiful Note-Taking App">
+  <meta property="og:title" content="Endroid Notes - Simple, Beautiful Note-Taking App with Amber Theme">
   <meta property="og:description" content="Endroid Notes is a minimalist, offline-first note-taking app with dark/light themes, live preview, and swipe-to-delete. Perfect for quick thoughts and ideas.">
-  <meta property="og:url" content="https://endroidnotes.com">
-  <meta property="og:image" content="https://endroidnotes.com/icon.svg">
-  <meta property="og:image:alt" content="Endroid Notes App Icon">
+  <meta property="og:url" content="https://endroid.pages.dev/Notes">
+  <meta property="og:image" content="https://endroid.pages.dev/icon.svg">
+  <meta property="og:image:alt" content="Endroid Notes App Icon with Amber Theme">
   <meta property="og:image:width" content="512">
   <meta property="og:image:height" content="512">
   <meta property="og:image:type" content="image/svg+xml">
@@ -36,55 +36,118 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@endroidnotes">
   <meta name="twitter:creator" content="@endroidnotes">
-  <meta name="twitter:title" content="Endroid Notes - Simple, Beautiful Note-Taking App">
-  <meta name="twitter:description" content="Endroid Notes is a minimalist, offline-first note-taking app with dark/light themes, live preview, and swipe-to-delete. Perfect for quick thoughts and ideas.">
-  <meta name="twitter:image" content="https://endroidnotes.com/icon.svg">
+  <meta name="twitter:title" content="Endroid Notes - Material You 3 Expressive Amber Theme">
+  <meta name="twitter:description" content="Experience emotional design with dynamic amber theming. Offline-first, swipe-to-delete, and live Markdown preview.">
+  <meta name="twitter:image" content="https://endroid.pages.dev/icon.svg">
   <meta name="twitter:image:alt" content="Endroid Notes App Icon">
 
   <!-- PWA: Favicon & Manifest -->
-  <link rel="icon" href="icon.svg" type="image/svg+xml">
-  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="https://endroid.pages.dev/icon.svg" type="image/svg+xml">
+  <link rel="manifest" href="https://endroid.pages.dev/manifest.json">
 
-  <!-- ADDED: Service Worker Meta -->
-  <meta name="service-worker" content="service-worker.js">
+  <!-- Service Worker Meta -->
+  <meta name="service-worker" content="https://endroid.pages.dev/service-worker.js">
 
   <style>
-    /* --- YOUR CSS (unchanged) --- */
+    /* --- MATERIAL YOU 3 COLOR PALETTE --- */
+    /* Seed Color: 0xFFFFC107 (Amber) */
+    
     :root {
-      --primary: #03dac6;
-      --primary-dark: #018786;
-      --surface: #1a1a1a;
-      --surface-var: #2a2a2a;
-      --text: #ffffff;
+      /* Dark theme (default) */
+      --primary: #FABD00;
+      --on-primary: #3F2E00;
+      --primary-container: #5B4300;
+      --on-primary-container: #FFDF9E;
+      --inverse-primary: #785900;
+      
+      --secondary: #D7C68D;
+      --on-secondary: #3A3005;
+      --secondary-container: #52461A;
+      --on-secondary-container: #F4E2A7;
+      
+      --background: #191306;
+      --on-background: #EFE1CA;
+      --surface: #191306;
+      --on-surface: #EFE1CA;
+      --surface-variant: #504631;
+      --on-surface-variant: #D4C5AA;
+      
+      --error: #FFB4AB;
+      --on-error: #690005;
+      --error-container: #93000A;
+      --on-error-container: #FFDAD6;
+      
+      --surface-container: #262011;
+      --surface-container-high: #312A1B;
+      --surface-container-highest: #3D3525;
+      
+      --danger: #FFB4AB;
+      
       --text-muted: rgba(255,255,255,0.6);
-      --danger: #ff6b6b;
       --radius: 24px;
       --shadow: 0 8px 32px rgba(0,0,0,0.25);
       --motion: 300ms ease;
     }
+
+    /* Light theme */
     [data-theme="light"] {
-      --primary: #018786;
-      --primary-dark: #03dac6;
-      --surface: #f9f9f9;
-      --surface-var: #eeeeee;
-      --text: #121212;
+      --primary: #735600;
+      --on-primary: #FFFFFF;
+      --primary-container: #F8BB00;
+      --on-primary-container: #5B4300;
+      --inverse-primary: #FABD00;
+      
+      --secondary: #665A2B;
+      --on-secondary: #FFFFFF;
+      --secondary-container: #D5C48C;
+      --on-secondary-container: #52461A;
+      
+      --background: #FFF8F2;
+      --on-background: #211B0D;
+      --surface: #FFF8F2;
+      --on-surface: #211B0D;
+      --surface-variant: #F1E1C5;
+      --on-surface-variant: #504631;
+      
+      --error: #B41517;
+      --on-error: #FFFFFF;
+      --error-container: #FFB1A8;
+      --on-error-container: #93000A;
+      
+      --surface-container: #FAECD4;
+      --surface-container-high: #F3E5CE;
+      --surface-container-highest: #EDDFC8;
+      
+      --danger: #B41517;
+      
       --text-muted: rgba(0,0,0,0.6);
       --shadow: 0 8px 32px rgba(0,0,0,0.12);
     }
 
-    * { margin:0; padding:0; box-sizing:border-box; }
+    * { 
+      margin:0; 
+      padding:0; 
+      box-sizing:border-box; 
+    }
+    
     body {
       font-family: 'Roboto', sans-serif;
-      background: var(--surface);
-      color: var(--text);
+      background: var(--background);
+      color: var(--on-background);
       height: 100vh;
       overflow: hidden;
     }
 
-    #homeScreen, #editorScreen { height: 100vh; display: flex; flex-direction: column; position: relative; }
+    #homeScreen, #editorScreen { 
+      height: 100vh; 
+      display: flex; 
+      flex-direction: column; 
+      position: relative; 
+    }
+    
     .home-header, .editor-header {
       background: var(--primary);
-      color: white;
+      color: var(--on-primary);
       padding: 20px;
       text-align: center;
       font-size: 1.5rem;
@@ -105,50 +168,259 @@
       align-items: center; justify-content: center;
       transition: all var(--motion);
     }
-    .theme-toggle:hover { background: rgba(255,255,255,0.3); transform: scale(1.1); }
-    [data-theme="light"] .theme-toggle { background: rgba(0,0,0,0.15); color: #121212; }
-    [data-theme="light"] .theme-toggle:hover { background: rgba(0,0,0,0.25); }
+    
+    .theme-toggle:hover { 
+      background: rgba(255,255,255,0.3); 
+      transform: scale(1.1); 
+    }
+    
+    [data-theme="light"] .theme-toggle { 
+      background: rgba(0,0,0,0.15); 
+      color: #121212; 
+    }
+    
+    [data-theme="light"] .theme-toggle:hover { 
+      background: rgba(0,0,0,0.25); 
+    }
 
-    .note-list { flex: 1; padding: 20px; overflow-y: auto; }
-    .note-item { background: var(--surface-var); border-radius: var(--radius); margin-bottom: 12px; overflow: hidden; position: relative; box-shadow: 0 4px 16px rgba(0,0,0,0.15); }
-    .note-content { padding: 16px 20px; background: var(--surface-var); cursor: pointer; position: relative; z-index: 2; transition: transform var(--motion); font-weight: 500; }
-    .note-title { font-weight: 500; font-size: 1.1rem; }
-    .delete-bg { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: var(--danger); display: flex; align-items: center; justify-content: flex-end; padding-right: 24px; color: white; font-size: 1.2rem; z-index: 1; transform: translateX(100%); transition: transform var(--motion); }
+    .note-list { 
+      flex: 1; 
+      padding: 20px; 
+      overflow-y: auto; 
+    }
+    
+    .note-item { 
+      background: var(--surface-container); 
+      border-radius: var(--radius); 
+      margin-bottom: 12px; 
+      overflow: hidden; 
+      position: relative; 
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+      display: flex;
+      align-items: center;
+    }
+    
+    .note-content { 
+      padding: 16px 20px; 
+      background: var(--surface-container); 
+      cursor: pointer; 
+      position: relative; 
+      z-index: 2; 
+      transition: transform var(--motion); 
+      font-weight: 500;
+      flex: 1;
+    }
+    
+    .note-title { 
+      font-weight: 500; 
+      font-size: 1.1rem; 
+      color: var(--on-surface);
+    }
+    
+    /* Delete background for swipe (mobile) */
+    .delete-bg { 
+      position: absolute; 
+      top: 0; 
+      left: 0; 
+      right: 0; 
+      bottom: 0; 
+      background: var(--danger); 
+      display: flex; 
+      align-items: center; 
+      justify-content: flex-end; 
+      padding-right: 24px; 
+      color: var(--on-error); 
+      font-size: 1.2rem; 
+      z-index: 1; 
+      transform: translateX(100%); 
+      transition: transform var(--motion); 
+    }
+    
+    /* Delete button for mouse/PC users */
+    .delete-button {
+      background: var(--danger);
+      color: var(--on-error);
+      border: none;
+      width: 60px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.5rem;
+      transition: all var(--motion);
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+    
+    .delete-button:hover {
+      background: var(--error-container);
+      color: var(--on-error-container);
+      transform: scale(1.05);
+    }
+    
+    /* Only show delete button on non-touch devices */
+    @media (hover: hover) and (pointer: fine) {
+      .delete-bg {
+        display: none;
+      }
+      .note-item {
+        padding-right: 0;
+      }
+    }
+    
+    /* Hide delete button on touch devices, keep swipe */
+    @media (hover: none) and (pointer: coarse) {
+      .delete-button {
+        display: none;
+      }
+    }
 
-    .empty-state { text-align: center; padding: 60px 20px; color: var(--text-muted); }
-    .empty-state .material-icons { font-size: 4rem; margin-bottom: 16px; opacity: 0.6; color: var(--text-muted); }
+    .empty-state { 
+      text-align: center; 
+      padding: 60px 20px; 
+      color: var(--text-muted); 
+    }
+    
+    .empty-state .material-icons { 
+      font-size: 4rem; 
+      margin-bottom: 16px; 
+      opacity: 0.6; 
+      color: var(--primary); 
+    }
 
-    #editorScreen { display: none; background: var(--surface); }
-    .editor-header { display: flex; align-items: center; gap: 16px; }
-    .back-btn { background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; padding: 8px; border-radius: 50%; }
-    .back-btn:hover { background: rgba(255,255,255,0.2); }
-    .editor-title-input { background: transparent; border: none; color: white; font-size: 1.3rem; font-weight: 500; flex: 1; outline: none; }
+    #editorScreen { 
+      display: none; 
+      background: var(--background); 
+    }
+    
+    .editor-header { 
+      display: flex; 
+      align-items: center; 
+      gap: 16px; 
+    }
+    
+    .back-btn { 
+      background: none; 
+      border: none; 
+      color: var(--on-primary); 
+      font-size: 1.5rem; 
+      cursor: pointer; 
+      padding: 8px; 
+      border-radius: 50%; 
+    }
+    
+    .back-btn:hover { 
+      background: rgba(255,255,255,0.2); 
+    }
+    
+    .editor-title-input { 
+      background: transparent; 
+      border: none; 
+      color: var(--on-primary); 
+      font-size: 1.3rem; 
+      font-weight: 500; 
+      flex: 1; 
+      outline: none; 
+    }
 
-    .editor-content { flex: 1; margin: 20px; background: var(--surface-var); border-radius: var(--radius); overflow: hidden; box-shadow: inset 0 4px 16px rgba(0,0,0,0.1); display: flex; flex-direction: column; }
-    #noteInput { flex: 1; padding: 24px; background: transparent; border: none; color: var(--text); font-size: 1.1rem; line-height: 1.7; resize: none; outline: none; font-family: inherit; font-weight: 500; }
-    #livePreview { flex: 1; padding: 24px; overflow-y: auto; line-height: 1.7; color: var(--text); display: none; font-weight: 500; }
+    .editor-content { 
+      flex: 1; 
+      margin: 20px; 
+      background: var(--surface-container); 
+      border-radius: var(--radius); 
+      overflow: hidden; 
+      box-shadow: inset 0 4px 16px rgba(0,0,0,0.1); 
+      display: flex; 
+      flex-direction: column; 
+    }
+    
+    #noteInput { 
+      flex: 1; 
+      padding: 24px; 
+      background: transparent; 
+      border: none; 
+      color: var(--on-surface); 
+      font-size: 1.1rem; 
+      line-height: 1.7; 
+      resize: none; 
+      outline: none; 
+      font-family: inherit; 
+      font-weight: 500; 
+    }
+    
+    #livePreview { 
+      flex: 1; 
+      padding: 24px; 
+      overflow-y: auto; 
+      line-height: 1.7; 
+      color: var(--on-surface); 
+      display: none; 
+      font-weight: 500; 
+    }
 
-    #livePreview * { margin: 8px 0; }
-    #livePreview strong { font-weight: 600; }
-    #livePreview em { font-style: italic; }
-    #livePreview code { background: rgba(0,0,0,0.1); padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 0.95em; }
-    [data-theme="light"] #livePreview code { background: rgba(0,0,0,0.08); }
-    #livePreview a { color: var(--primary); text-decoration: underline; }
-    #livePreview ul, #livePreview ol { padding-left: 24px; }
-    #livePreview h1 { font-size: 1.6em; margin: 16px 0 8px; font-weight: 600; }
-    #livePreview h2 { font-size: 1.4em; margin: 16px 0 8px; font-weight: 600; }
-    #livePreview h3 { font-size: 1.2em; margin: 16px 0 8px; font-weight: 600; }
+    #livePreview * { 
+      margin: 8px 0; 
+    }
+    
+    #livePreview strong { 
+      font-weight: 600; 
+      color: var(--primary);
+    }
+    
+    #livePreview em { 
+      font-style: italic; 
+    }
+    
+    #livePreview code { 
+      background: var(--surface-container-high); 
+      padding: 2px 6px; 
+      border-radius: 4px; 
+      font-family: monospace; 
+      font-size: 0.95em; 
+      color: var(--on-surface);
+    }
+    
+    #livePreview a { 
+      color: var(--primary); 
+      text-decoration: underline; 
+    }
+    
+    #livePreview ul, #livePreview ol { 
+      padding-left: 24px; 
+    }
+    
+    #livePreview h1 { 
+      font-size: 1.6em; 
+      margin: 16px 0 8px; 
+      font-weight: 600; 
+      color: var(--primary);
+    }
+    
+    #livePreview h2 { 
+      font-size: 1.4em; 
+      margin: 16px 0 8px; 
+      font-weight: 600; 
+      color: var(--secondary);
+    }
 
     .fab {
       position: fixed; bottom: 32px; right: 32px;
       width: 56px; height: 56px; background: var(--primary);
-      color: white; border: none; border-radius: 50%;
+      color: var(--on-primary); border: none; border-radius: 50%;
       font-size: 1.5rem; cursor: pointer; box-shadow: var(--shadow);
       transition: all var(--motion);
     }
-    .fab:hover { transform: scale(1.1); }
+    
+    .fab:hover { 
+      transform: scale(1.1); 
+      background: var(--primary-container);
+      color: var(--on-primary-container);
+    }
 
-    @media (max-width: 768px) { .fab { bottom: 16px; right: 16px; } .note-list { padding: 16px; } }
+    @media (max-width: 768px) { 
+      .fab { bottom: 16px; right: 16px; } 
+      .note-list { padding: 16px; } 
+    }
   </style>
 </head>
 <body data-theme="dark">
@@ -160,7 +432,7 @@
     <div class="note-list" id="noteList">
       <div class="empty-state">
         <div class="material-icons">note_add</div>
-        <div>No notes yet.<br>Tap + to create one.<br>Swipe left to delete</div>
+        <div>No notes yet.<br>Tap + to create one.<br>Swipe left or click delete to remove</div>
       </div>
     </div>
     <button class="fab" id="addNoteBtn"><span class="material-icons">add</span></button>
@@ -180,12 +452,6 @@
   </div>
 
   <script>
-    // Update preview directly
-    function updatePreview() {
-      const text = noteInput.value;
-      livePreview.textContent = text;
-    }
-
     // DOM Elements
     const homeScreen = document.getElementById('homeScreen');
     const editorScreen = document.getElementById('editorScreen');
@@ -198,10 +464,15 @@
     const themeToggle = document.getElementById('themeToggle');
     const themeToggleEditor = document.getElementById('themeToggleEditor');
 
-    let notes = JSON.parse(localStorage.getItem('endroid-notes-v9')) || [];
+    let notes = JSON.parse(localStorage.getItem('endroid-notes-v10')) || [];
     let currentNoteId = null;
     let touchStartX = 0;
     let isSwiping = false;
+
+    // Check if device is touch-enabled
+    const isTouchDevice = ('ontouchstart' in window) || 
+                         (navigator.maxTouchPoints > 0) || 
+                         (navigator.msMaxTouchPoints > 0);
 
     // Theme toggle
     function toggleTheme() {
@@ -214,59 +485,107 @@
 
     const saved = localStorage.getItem('endroid-theme');
     if (saved) document.body.dataset.theme = saved;
-    else document.body.dataset.theme = 'dark';
 
-    // Render Home Screen with Swipe to Delete
+    // Update preview
+    function updatePreview() {
+      const text = noteInput.value;
+      livePreview.textContent = text;
+    }
+
+    // Delete note function
+    function deleteNote(index, element) {
+      notes.splice(index, 1);
+      localStorage.setItem('endroid-notes-v10', JSON.stringify(notes));
+      if (element) {
+        element.style.transition = 'all 0.3s';
+        element.style.transform = 'translateX(-100%)';
+        element.style.opacity = '0';
+        setTimeout(() => renderHome(), 300);
+      } else {
+        renderHome();
+      }
+    }
+
+    // Render Home Screen
     function renderHome() {
       noteList.innerHTML = '';
+      
       if (!notes.length) {
-        noteList.innerHTML = `<div class="empty-state"><div class="material-icons">note_add</div><div>No notes yet.<br>Tap + to create one.<br>Swipe left to delete</div></div>`;
+        noteList.innerHTML = `<div class="empty-state"><div class="material-icons">note_add</div><div>No notes yet.<br>Tap + to create one.<br>Swipe left or click delete to remove</div></div>`;
         return;
       }
 
       notes.forEach((note, i) => {
         const item = document.createElement('div');
         item.className = 'note-item';
-        item.innerHTML = `<div class="delete-bg"><span class="material-icons">delete</span></div><div class="note-content"><div class="note-title">${note.title || 'Untitled'}</div></div>`;
+        
+        // Different structure for touch vs mouse
+        if (isTouchDevice) {
+          // Touch device: Swipe to delete
+          item.innerHTML = `
+            <div class="delete-bg"><span class="material-icons">delete</span></div>
+            <div class="note-content">
+              <div class="note-title">${note.title || 'Untitled'}</div>
+            </div>
+          `;
+        } else {
+          // Mouse/PC: Delete button
+          item.innerHTML = `
+            <div class="note-content" style="flex: 1;">
+              <div class="note-title">${note.title || 'Untitled'}</div>
+            </div>
+            <button class="delete-button" data-index="${i}" aria-label="Delete note">
+              <span class="material-icons">delete</span>
+            </button>
+          `;
+        }
+
         const content = item.querySelector('.note-content');
-        const bg = item.querySelector('.delete-bg');
+        
+        if (isTouchDevice) {
+          // Touch swipe logic
+          const bg = item.querySelector('.delete-bg');
 
-        // Swipe to delete
-        content.addEventListener('touchstart', e => {
-          touchStartX = e.touches[0].clientX;
-          isSwiping = true;
-        });
+          content.addEventListener('touchstart', e => {
+            touchStartX = e.touches[0].clientX;
+            isSwiping = true;
+          });
 
-        content.addEventListener('touchmove', e => {
-          if (!isSwiping) return;
-          const diff = touchStartX - e.touches[0].clientX;
-          if (diff > 0) {
-            content.style.transform = `translateX(-${Math.min(diff, 120)}px)`;
-            bg.style.transform = `translateX(-${Math.min(diff, 120)}px)`;
-          }
-        });
+          content.addEventListener('touchmove', e => {
+            if (!isSwiping) return;
+            const diff = touchStartX - e.touches[0].clientX;
+            if (diff > 0) {
+              content.style.transform = `translateX(-${Math.min(diff, 120)}px)`;
+              bg.style.transform = `translateX(-${Math.min(diff, 120)}px)`;
+            }
+          });
 
-        content.addEventListener('touchend', () => {
-          const diff = touchStartX - (event.changedTouches?.[0]?.clientX || touchStartX);
-          if (diff > 80) {
-            // Delete
-            notes.splice(i, 1);
-            localStorage.setItem('endroid-notes-v9', JSON.stringify(notes));
-            item.style.transition = 'all 0.3s';
-            item.style.transform = 'translateX(-100%)';
-            item.style.opacity = '0';
-            setTimeout(() => renderHome(), 300);
+          content.addEventListener('touchend', (e) => {
+            const diff = touchStartX - (e.changedTouches?.[0]?.clientX || touchStartX);
+            if (diff > 80) {
+              deleteNote(i, item);
+            } else {
+              content.style.transform = '';
+              bg.style.transform = '';
+            }
+            isSwiping = false;
+          });
+        } else {
+          // Mouse: Delete button click
+          const deleteBtn = item.querySelector('.delete-button');
+          deleteBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            deleteNote(i, item);
+          });
+        }
+
+        // Tap to open (works for both)
+        content.addEventListener('click', (e) => {
+          if (isTouchDevice) {
+            if (Math.abs(touchStartX - (e.changedTouches?.[0]?.clientX || e.clientX)) < 10) {
+              openEditor(i);
+            }
           } else {
-            // Reset
-            content.style.transform = '';
-            bg.style.transform = '';
-          }
-          isSwiping = false;
-        });
-
-        // Tap to open
-        content.addEventListener('click', e => {
-          if (Math.abs(touchStartX - (e.changedTouches?.[0]?.clientX || e.clientX)) < 10) {
             openEditor(i);
           }
         });
@@ -288,9 +607,13 @@
 
     // Save and go back
     function saveAndBack() {
-      if (currentNoteId === null) return;
-      notes[currentNoteId] = { title: editorTitle.value.trim() || 'Untitled', content: noteInput.value };
-      localStorage.setItem('endroid-notes-v9', JSON.stringify(notes));
+      if (currentNoteId !== null) {
+        notes[currentNoteId] = { 
+          title: editorTitle.value.trim() || 'Untitled', 
+          content: noteInput.value 
+        };
+        localStorage.setItem('endroid-notes-v10', JSON.stringify(notes));
+      }
       currentNoteId = null;
       editorScreen.style.display = 'none';
       homeScreen.style.display = 'flex';
@@ -300,7 +623,7 @@
     // Event Listeners
     addBtn.addEventListener('click', () => {
       notes.push({ title: 'New Note', content: '' });
-      localStorage.setItem('endroid-notes-v9', JSON.stringify(notes));
+      localStorage.setItem('endroid-notes-v10', JSON.stringify(notes));
       openEditor(notes.length - 1);
     });
 
@@ -308,16 +631,21 @@
     noteInput.addEventListener('input', updatePreview);
     editorTitle.addEventListener('input', updatePreview);
 
-    // Init
-    renderHome();
-  </script>
+    // Keyboard shortcut: Save on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && editorScreen.style.display === 'flex') {
+        saveAndBack();
+      }
+    });
 
-  <!-- ADDED: Service Worker Registration -->
-  <script>
+    // Initialize
+    renderHome();
+
+    // Service Worker Registration
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", () => {
         navigator.serviceWorker
-          .register("service-worker.js")
+          .register("https://endroid.pages.dev/service-worker.js")
           .then(() => console.log("Service Worker registered"))
           .catch(err => console.error("SW registration failed:", err));
       });
@@ -325,4 +653,4 @@
   </script>
 
 </body>
-</html>
+      </html>

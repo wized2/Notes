@@ -54,7 +54,7 @@
   <meta name="twitter:image:alt" content="Endroid Notes App Icon">
 
   <!-- Service Worker Meta -->
-  <meta name="service-worker" content="/service-worker.js">
+  <meta name="service-worker" content="service-worker.js">
 
   <style>
     /* ============ MATERIAL YOU 3 COLOR PALETTE (seed #73CCFF) ============ */
@@ -979,7 +979,7 @@
 
       mainContent.addEventListener('scroll', ()=> topBar.classList.toggle('scrolled', mainContent.scrollTop>4), {passive:true});
 
-      if("serviceWorker" in navigator) window.addEventListener("load", ()=> navigator.serviceWorker.register("/service-worker.js"));
+      if("serviceWorker" in navigator) window.addEventListener("load", ()=> navigator.serviceWorker.register("service-worker.js"));
     })();
   </script>
 </body>

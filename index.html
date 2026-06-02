@@ -4,653 +4,983 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Endroid Notes</title>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-  <!-- SEO Meta Tags -->
-  <meta name="description" content="Endroid Notes is a beautiful, offline-first note-taking app with Material You 3 amber theming, live Markdown preview, and swipe-to-delete. Perfect for quick thoughts.">
-  <meta name="keywords" content="notes app, note taking, offline notes, PWA notes, markdown preview, dark mode, Material You 3, amber theme">
+  <!-- Material Symbols Rounded (filled) -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+  <!-- Roboto typeface -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Primary Meta Tags -->
+  <meta name="description" content="Endroid Notes is a beautiful, offline-first note-taking app with Material You 3 blue theming, live Markdown preview, task management, and a unified trash system. Works as a PWA.">
+  <meta name="keywords" content="notes app, note taking, offline notes, PWA notes, markdown preview, blue theme, Material You 3, todo list, trash, task management">
   <meta name="author" content="Endroid">
   <meta name="robots" content="index, follow">
-  <meta name="theme-color" content="#FABD00">
-  <meta name="msapplication-TileColor" content="#FABD00">
   <meta name="application-name" content="Endroid Notes">
+  <meta name="format-detection" content="telephone=no">
+
+  <!-- PWA Meta Tags -->
+  <link rel="icon" href="/Notes/favicon.svg" sizes="48x48">
+  <link rel="icon" href="/Notes/icons/icon-192x192.png" type="image/png" sizes="192x192">
+  <link rel="icon" href="/Notes/icons/icon-512x512.png" type="image/png" sizes="512x512">
+  <link rel="apple-touch-icon" href="/Notes/icons/icon-180x180.png">
+  <link rel="manifest" href="/Notes/manifest.json">
+
+  <meta name="theme-color" content="#00658C">
+  <meta name="msapplication-TileColor" content="#00658C">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="Endroid Notes">
-  <meta name="format-detection" content="telephone=no">
+
+  <!-- Open Graph / Social Media Meta Tags -->
   <meta property="og:site_name" content="Endroid Notes">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_US">
-
-  <!-- Social Media Sharing Meta Tags (Open Graph) -->
-  <meta property="og:title" content="Endroid Notes - Simple, Beautiful Note-Taking App with Amber Theme">
-  <meta property="og:description" content="Endroid Notes is a minimalist, offline-first note-taking app with dark/light themes, live preview, and swipe-to-delete. Perfect for quick thoughts and ideas.">
-  <meta property="og:url" content="https://endroid.pages.dev/Notes">
-  <meta property="og:image" content="https://endroid.pages.dev/icon.svg">
-  <meta property="og:image:alt" content="Endroid Notes App Icon with Amber Theme">
+  <meta property="og:title" content="Endroid Notes - Blue Lite Expressive">
+  <meta property="og:description" content="Endroid Notes is a minimalist, offline-first note-taking app with Material You 3 blue theming, live preview, and swipe-to-delete.">
+  <meta property="og:url" content="https://wized2.github.io/Notes">
+  <meta property="og:image" content="https://wized2.github.io/Notes/icons/icon-512x512.png">
+  <meta property="og:image:alt" content="Endroid Notes App Icon with Blue Theme">
   <meta property="og:image:width" content="512">
   <meta property="og:image:height" content="512">
-  <meta property="og:image:type" content="image/svg+xml">
+  <meta property="og:image:type" content="image/png">
 
-  <!-- Twitter Cards -->
+  <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@endroidnotes">
   <meta name="twitter:creator" content="@endroidnotes">
-  <meta name="twitter:title" content="Endroid Notes - Material You 3 Expressive Amber Theme">
-  <meta name="twitter:description" content="Experience emotional design with dynamic amber theming. Offline-first, swipe-to-delete, and live Markdown preview.">
-  <meta name="twitter:image" content="icon.png">
+  <meta name="twitter:title" content="Endroid Notes - Material You 3 Expressive Blue Theme">
+  <meta name="twitter:description" content="Experience emotional design with dynamic blue theming. Offline-first, swipe-to-delete, and live Markdown preview.">
+  <meta name="twitter:image" content="https://wized2.github.io/Notes/icons/icon-512x512.png">
   <meta name="twitter:image:alt" content="Endroid Notes App Icon">
 
-  <!-- PWA: Favicon & Manifest -->
-  <link rel="icon" href="icon.png" type="image/svg+xml">
-  <link rel="manifest" href="manifest.json">
-
   <!-- Service Worker Meta -->
-  <meta name="service-worker" content="service-worker.js">
+  <meta name="service-worker" content="/Notes/service-worker.js">
 
   <style>
-    /* --- MATERIAL YOU 3 COLOR PALETTE --- */
-    /* Seed Color: 0xFFFFC107 (Amber) */
-    
+    /* ============ MATERIAL YOU 3 COLOR PALETTE (seed #73CCFF) ============ */
     :root {
-      /* Dark theme (default) */
-      --primary: #FABD00;
-      --on-primary: #3F2E00;
-      --primary-container: #5B4300;
-      --on-primary-container: #FFDF9E;
-      --inverse-primary: #785900;
-      
-      --secondary: #D7C68D;
-      --on-secondary: #3A3005;
-      --secondary-container: #52461A;
-      --on-secondary-container: #F4E2A7;
-      
-      --background: #191306;
-      --on-background: #EFE1CA;
-      --surface: #191306;
-      --on-surface: #EFE1CA;
-      --surface-variant: #504631;
-      --on-surface-variant: #D4C5AA;
-      
-      --error: #FFB4AB;
-      --on-error: #690005;
-      --error-container: #93000A;
-      --on-error-container: #FFDAD6;
-      
-      --surface-container: #262011;
-      --surface-container-high: #312A1B;
-      --surface-container-highest: #3D3525;
-      
-      --danger: #FFB4AB;
-      
-      --text-muted: rgba(255,255,255,0.6);
-      --radius: 24px;
-      --shadow: 0 8px 32px rgba(0,0,0,0.25);
-      --motion: 300ms ease;
+      --md-sys-color-primary: #00658C;
+      --md-sys-color-on-primary: #FFFFFF;
+      --md-sys-color-primary-container: #C5E7FF;
+      --md-sys-color-on-primary-container: #004C6A;
+      --md-sys-color-inverse-primary: #80D0FF;
+
+      --md-sys-color-secondary: #4A607B;
+      --md-sys-color-on-secondary: #FFFFFF;
+      --md-sys-color-secondary-container: #D2E4FF;
+      --md-sys-color-on-secondary-container: #324863;
+
+      --md-sys-color-tertiary: #4D5D8B;
+      --md-sys-color-on-tertiary: #FFFFFF;
+      --md-sys-color-tertiary-container: #DBE1FF;
+      --md-sys-color-on-tertiary-container: #354571;
+
+      --md-sys-color-error: #BA1A1A;
+      --md-sys-color-on-error: #FFFFFF;
+      --md-sys-color-error-container: #FFDAD6;
+      --md-sys-color-on-error-container: #93000A;
+
+      --md-sys-color-background: #F5FAFF;
+      --md-sys-color-on-background: #131D23;
+      --md-sys-color-surface: #F5FAFF;
+      --md-sys-color-on-surface: #131D23;
+      --md-sys-color-surface-variant: #D7E4EF;
+      --md-sys-color-on-surface-variant: #3C4851;
+      --md-sys-color-outline: #6C7982;
+      --md-sys-color-outline-variant: #BBC8D2;
+      --md-sys-color-inverse-surface: #283238;
+      --md-sys-color-inverse-on-surface: #E8F2FB;
+
+      --md-sys-color-surface-container-lowest: #FFFFFF;
+      --md-sys-color-surface-container-low: #EBF5FD;
+      --md-sys-color-surface-container: #E5EFF8;
+      --md-sys-color-surface-container-high: #E0E9F2;
+      --md-sys-color-surface-container-highest: #DAE4EC;
+
+      --md-sys-shape-corner-full: 9999px;
+      --md-sys-shape-corner-xl: 28px;
+      --md-sys-shape-corner-l: 24px;
+      --md-sys-shape-corner-m: 16px;
+      --md-sys-shape-corner-s: 12px;
+      --md-sys-shape-corner-xs: 8px;
+
+      --md-sys-elevation-1: 0px 1px 2px rgba(0,0,0,0.05), 0px 1px 3px 1px rgba(0,0,0,0.05);
+      --md-sys-elevation-2: 0px 1px 2px rgba(0,0,0,0.06), 0px 2px 6px 2px rgba(0,0,0,0.05);
+      --md-sys-elevation-3: 0px 4px 8px 3px rgba(0,0,0,0.06), 0px 1px 3px 0px rgba(0,0,0,0.07);
+      --md-sys-elevation-4: 0px 6px 10px 4px rgba(0,0,0,0.07), 0px 2px 3px 0px rgba(0,0,0,0.08);
+      --md-sys-elevation-5: 0px 8px 12px 6px rgba(0,0,0,0.07), 0px 4px 4px 0px rgba(0,0,0,0.08);
     }
 
-    /* Light theme */
-    [data-theme="light"] {
-      --primary: #735600;
-      --on-primary: #FFFFFF;
-      --primary-container: #F8BB00;
-      --on-primary-container: #5B4300;
-      --inverse-primary: #FABD00;
-      
-      --secondary: #665A2B;
-      --on-secondary: #FFFFFF;
-      --secondary-container: #D5C48C;
-      --on-secondary-container: #52461A;
-      
-      --background: #FFF8F2;
-      --on-background: #211B0D;
-      --surface: #FFF8F2;
-      --on-surface: #211B0D;
-      --surface-variant: #F1E1C5;
-      --on-surface-variant: #504631;
-      
-      --error: #B41517;
-      --on-error: #FFFFFF;
-      --error-container: #FFB1A8;
-      --on-error-container: #93000A;
-      
-      --surface-container: #FAECD4;
-      --surface-container-high: #F3E5CE;
-      --surface-container-highest: #EDDFC8;
-      
-      --danger: #B41517;
-      
-      --text-muted: rgba(0,0,0,0.6);
-      --shadow: 0 8px 32px rgba(0,0,0,0.12);
+    [data-theme="dark"] {
+      --md-sys-color-primary: #80D0FF;
+      --md-sys-color-on-primary: #00344B;
+      --md-sys-color-primary-container: #004C6A;
+      --md-sys-color-on-primary-container: #C5E7FF;
+      --md-sys-color-inverse-primary: #00658C;
+
+      --md-sys-color-secondary: #B2C8E8;
+      --md-sys-color-on-secondary: #1B324B;
+      --md-sys-color-secondary-container: #324863;
+      --md-sys-color-on-secondary-container: #D2E4FF;
+
+      --md-sys-color-tertiary: #B5C5F9;
+      --md-sys-color-on-tertiary: #1E2E59;
+      --md-sys-color-tertiary-container: #354571;
+      --md-sys-color-on-tertiary-container: #DBE1FF;
+
+      --md-sys-color-error: #FFB4AB;
+      --md-sys-color-on-error: #690005;
+      --md-sys-color-error-container: #93000A;
+      --md-sys-color-on-error-container: #FFDAD6;
+
+      --md-sys-color-background: #0B141A;
+      --md-sys-color-on-background: #DAE4EC;
+      --md-sys-color-surface: #0B141A;
+      --md-sys-color-on-surface: #DAE4EC;
+      --md-sys-color-surface-variant: #3C4851;
+      --md-sys-color-on-surface-variant: #BBC8D2;
+      --md-sys-color-outline: #86929C;
+      --md-sys-color-outline-variant: #3C4851;
+      --md-sys-color-inverse-surface: #DAE4EC;
+      --md-sys-color-inverse-on-surface: #283238;
+
+      --md-sys-color-surface-container-lowest: #060F15;
+      --md-sys-color-surface-container-low: #131D23;
+      --md-sys-color-surface-container: #182127;
+      --md-sys-color-surface-container-high: #222B31;
+      --md-sys-color-surface-container-highest: #2D363D;
     }
 
-    * { 
-      margin:0; 
-      padding:0; 
-      box-sizing:border-box; 
-    }
-    
+    * { margin:0; padding:0; box-sizing:border-box; }
+
     body {
       font-family: 'Roboto', sans-serif;
-      background: var(--background);
-      color: var(--on-background);
-      height: 100vh;
+      background: var(--md-sys-color-background);
+      color: var(--md-sys-color-on-background);
+      height: 100vh; height: 100dvh;
       overflow: hidden;
-    }
-
-    #homeScreen, #editorScreen { 
-      height: 100vh; 
-      display: flex; 
-      flex-direction: column; 
-      position: relative; 
-    }
-    
-    .home-header, .editor-header {
-      background: var(--primary);
-      color: var(--on-primary);
-      padding: 20px;
-      text-align: center;
-      font-size: 1.5rem;
-      font-weight: 600;
-      border-radius: 0 0 var(--radius) var(--radius);
-      box-shadow: var(--shadow);
-      position: relative;
-    }
-
-    .theme-toggle {
-      position: absolute;
-      top: 16px; right: 16px;
-      width: 48px; height: 48px;
-      background: rgba(255,255,255,0.2);
-      border: none; border-radius: 50%;
-      color: white; font-size: 1.4rem;
-      cursor: pointer; display: flex;
-      align-items: center; justify-content: center;
-      transition: all var(--motion);
-    }
-    
-    .theme-toggle:hover { 
-      background: rgba(255,255,255,0.3); 
-      transform: scale(1.1); 
-    }
-    
-    [data-theme="light"] .theme-toggle { 
-      background: rgba(0,0,0,0.15); 
-      color: #121212; 
-    }
-    
-    [data-theme="light"] .theme-toggle:hover { 
-      background: rgba(0,0,0,0.25); 
-    }
-
-    .note-list { 
-      flex: 1; 
-      padding: 20px; 
-      overflow-y: auto; 
-    }
-    
-    .note-item { 
-      background: var(--surface-container); 
-      border-radius: var(--radius); 
-      margin-bottom: 12px; 
-      overflow: hidden; 
-      position: relative; 
-      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
       display: flex;
-      align-items: center;
-    }
-    
-    .note-content { 
-      padding: 16px 20px; 
-      background: var(--surface-container); 
-      cursor: pointer; 
-      position: relative; 
-      z-index: 2; 
-      transition: transform var(--motion); 
-      font-weight: 500;
-      flex: 1;
-    }
-    
-    .note-title { 
-      font-weight: 500; 
-      font-size: 1.1rem; 
-      color: var(--on-surface);
-    }
-    
-    /* Delete background for swipe (mobile) */
-    .delete-bg { 
-      position: absolute; 
-      top: 0; 
-      left: 0; 
-      right: 0; 
-      bottom: 0; 
-      background: var(--danger); 
-      display: flex; 
-      align-items: center; 
-      justify-content: flex-end; 
-      padding-right: 24px; 
-      color: var(--on-error); 
-      font-size: 1.2rem; 
-      z-index: 1; 
-      transform: translateX(100%); 
-      transition: transform var(--motion); 
-    }
-    
-    /* Delete button for mouse/PC users */
-    .delete-button {
-      background: var(--danger);
-      color: var(--on-error);
-      border: none;
-      width: 60px;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      font-size: 1.5rem;
-      transition: all var(--motion);
-      border-radius: 0 var(--radius) var(--radius) 0;
-    }
-    
-    .delete-button:hover {
-      background: var(--error-container);
-      color: var(--on-error-container);
-      transform: scale(1.05);
-    }
-    
-    /* Only show delete button on non-touch devices */
-    @media (hover: hover) and (pointer: fine) {
-      .delete-bg {
-        display: none;
-      }
-      .note-item {
-        padding-right: 0;
-      }
-    }
-    
-    /* Hide delete button on touch devices, keep swipe */
-    @media (hover: none) and (pointer: coarse) {
-      .delete-button {
-        display: none;
-      }
+      flex-direction: column;
+      transition: background 0.35s cubic-bezier(0.2,0,0,1), color 0.35s cubic-bezier(0.2,0,0,1);
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-tap-highlight-color: transparent;
     }
 
-    .empty-state { 
-      text-align: center; 
-      padding: 60px 20px; 
-      color: var(--text-muted); 
+    /* Scrim */
+    .scrim {
+      position: fixed; inset:0; background:rgba(0,0,0,0.4); z-index:90;
+      opacity:0; pointer-events:none; transition:opacity 0.35s cubic-bezier(0.2,0,0,1);
     }
-    
-    .empty-state .material-icons { 
-      font-size: 4rem; 
-      margin-bottom: 16px; 
-      opacity: 0.6; 
-      color: var(--primary); 
-    }
+    .scrim.active { opacity:1; pointer-events:auto; }
 
-    #editorScreen { 
-      display: none; 
-      background: var(--background); 
+    /* Drawer */
+    .drawer {
+      position:fixed; top:0; left:0; width:320px; max-width:85vw;
+      height:100%; background: var(--md-sys-color-surface-container-low);
+      border-right:1px solid var(--md-sys-color-outline-variant);
+      z-index:100; transform:translateX(-100%);
+      transition:transform 0.4s cubic-bezier(0.05,0.7,0.1,1);
+      display:flex; flex-direction:column;
+      border-radius:0 var(--md-sys-shape-corner-l) var(--md-sys-shape-corner-l) 0;
+      box-shadow: var(--md-sys-elevation-4);
     }
-    
-    .editor-header { 
-      display: flex; 
-      align-items: center; 
-      gap: 16px; 
-    }
-    
-    .back-btn { 
-      background: none; 
-      border: none; 
-      color: var(--on-primary); 
-      font-size: 1.5rem; 
-      cursor: pointer; 
-      padding: 8px; 
-      border-radius: 50%; 
-    }
-    
-    .back-btn:hover { 
-      background: rgba(255,255,255,0.2); 
-    }
-    
-    .editor-title-input { 
-      background: transparent; 
-      border: none; 
-      color: var(--on-primary); 
-      font-size: 1.3rem; 
-      font-weight: 500; 
-      flex: 1; 
-      outline: none; 
-    }
+    .drawer.open { transform:translateX(0); }
 
-    .editor-content { 
-      flex: 1; 
-      margin: 20px; 
-      background: var(--surface-container); 
-      border-radius: var(--radius); 
-      overflow: hidden; 
-      box-shadow: inset 0 4px 16px rgba(0,0,0,0.1); 
-      display: flex; 
-      flex-direction: column; 
-    }
-    
-    #noteInput { 
-      flex: 1; 
-      padding: 24px; 
-      background: transparent; 
-      border: none; 
-      color: var(--on-surface); 
-      font-size: 1.1rem; 
-      line-height: 1.7; 
-      resize: none; 
-      outline: none; 
-      font-family: inherit; 
-      font-weight: 500; 
-    }
-    
-    #livePreview { 
-      flex: 1; 
-      padding: 24px; 
-      overflow-y: auto; 
-      line-height: 1.7; 
-      color: var(--on-surface); 
-      display: none; 
-      font-weight: 500; 
-    }
+    .drawer-header { padding:24px 20px 16px; display:flex; align-items:center; gap:14px; border-bottom:1px solid var(--md-sys-color-outline-variant); }
+    .drawer-header .app-icon { width:44px; height:44px; border-radius:50%; background:var(--md-sys-color-primary-container); display:flex; align-items:center; justify-content:center; }
+    .drawer-header .app-icon span { font-size:26px; color:var(--md-sys-color-on-primary-container); }
+    .drawer-header .app-title { font-size:1.25rem; font-weight:600; color:var(--md-sys-color-on-surface); }
 
-    #livePreview * { 
-      margin: 8px 0; 
+    .drawer-nav { flex:1; padding:12px; display:flex; flex-direction:column; gap:4px; }
+    .drawer-item {
+      display:flex; align-items:center; gap:14px; padding:14px 16px;
+      border-radius:var(--md-sys-shape-corner-full); cursor:pointer;
+      font-size:0.95rem; font-weight:500; color:var(--md-sys-color-on-surface-variant);
+      transition:all 0.2s cubic-bezier(0.2,0,0,1); background:none; border:none;
+      width:100%; text-align:left; font-family:inherit;
+      user-select:none;
     }
-    
-    #livePreview strong { 
-      font-weight: 600; 
-      color: var(--primary);
-    }
-    
-    #livePreview em { 
-      font-style: italic; 
-    }
-    
-    #livePreview code { 
-      background: var(--surface-container-high); 
-      padding: 2px 6px; 
-      border-radius: 4px; 
-      font-family: monospace; 
-      font-size: 0.95em; 
-      color: var(--on-surface);
-    }
-    
-    #livePreview a { 
-      color: var(--primary); 
-      text-decoration: underline; 
-    }
-    
-    #livePreview ul, #livePreview ol { 
-      padding-left: 24px; 
-    }
-    
-    #livePreview h1 { 
-      font-size: 1.6em; 
-      margin: 16px 0 8px; 
-      font-weight: 600; 
-      color: var(--primary);
-    }
-    
-    #livePreview h2 { 
-      font-size: 1.4em; 
-      margin: 16px 0 8px; 
-      font-weight: 600; 
-      color: var(--secondary);
-    }
+    .drawer-item:hover { background:var(--md-sys-color-surface-container-highest); }
+    .drawer-item:active { background:var(--md-sys-color-surface-container-high); transform:scale(0.97); }
+    .drawer-item.active { background:var(--md-sys-color-secondary-container); color:var(--md-sys-color-on-secondary-container); font-weight:600; }
+    .drawer-item.active span { color:var(--md-sys-color-on-secondary-container); }
 
+    /* Top bar */
+    .top-bar {
+      background: var(--md-sys-color-surface-container-low);
+      border-bottom:1px solid var(--md-sys-color-outline-variant);
+      padding:10px 12px; display:flex; align-items:center; gap:10px;
+      z-index:10; min-height:56px;
+    }
+    .top-bar-title {
+      font-size:1.35rem; font-weight:600; color:var(--md-sys-color-on-surface);
+      letter-spacing:-0.01em; flex:1;
+      user-select:none; line-height:1.2;
+    }
+    /* Circular icon buttons – perfectly centered */
+    .icon-circle {
+      width:44px; height:44px; border-radius:50%;
+      background: var(--md-sys-color-surface-container-high);
+      display:flex; align-items:center; justify-content:center;
+      cursor:pointer; transition:all 0.2s cubic-bezier(0.2,0,0,1);
+      color:var(--md-sys-color-on-surface);
+      user-select:none; border:none;
+      box-shadow: var(--md-sys-elevation-1);
+      flex-shrink:0;
+      padding:0; margin:0;
+      line-height:0;
+    }
+    .icon-circle:hover { background: var(--md-sys-color-surface-container-highest); }
+    .icon-circle:active { transform:scale(0.9); transition:all 0.1s cubic-bezier(0.2,0,0,1); }
+    .icon-circle .material-symbols-rounded {
+      font-size:22px; display:block; line-height:1;
+    }
+    .menu-btn, .info-btn, .theme-btn {
+      border:none; background:transparent; padding:0;
+    }
+    .info-btn { display:none; }
+    .editor-mode .info-btn { display:block; }
+    .editor-mode .menu-btn { display:none; }
+
+    /* Main content */
+    .main-content { flex:1; overflow-y:auto; padding:14px 16px; display:flex; flex-direction:column; gap:10px; scroll-behavior:smooth; }
+
+    /* Note bars */
+    .notes-list { display:flex; flex-direction:column; gap:10px; padding-bottom:80px; flex:1; }
+    .note-bar {
+      display:flex; align-items:center; gap:14px;
+      background: var(--md-sys-color-surface-container);
+      border:1px solid var(--md-sys-color-outline-variant);
+      border-radius:var(--md-sys-shape-corner-full); padding:13px 20px;
+      box-shadow: var(--md-sys-elevation-1); transition:all 0.25s cubic-bezier(0.2,0,0,1);
+      cursor:pointer; user-select:none;
+      will-change:transform;
+    }
+    .note-bar:hover { background: var(--md-sys-color-surface-container-high); border-color:var(--md-sys-color-primary); transform:translateY(-2px); box-shadow: var(--md-sys-elevation-3); }
+    .note-bar:active { transform:scale(0.98); transition:all 0.08s cubic-bezier(0.2,0,0,1); }
+    .note-bar .bar-content { flex:1; display:flex; flex-direction:column; gap:3px; min-width:0; }
+    .note-bar .bar-title { font-weight:600; font-size:0.95rem; color:var(--md-sys-color-on-surface); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .note-bar .bar-date { font-size:0.75rem; color:var(--md-sys-color-outline); }
+    .bar-actions { display:flex; gap:4px; flex-shrink:0; }
+    .icon-btn {
+      width:38px; height:38px; border-radius:50%; border:none; background:transparent;
+      cursor:pointer; display:flex; align-items:center; justify-content:center;
+      color:var(--md-sys-color-on-surface-variant); transition:all 0.2s cubic-bezier(0.2,0,0,1);
+      user-select:none; flex-shrink:0; padding:0; line-height:0;
+    }
+    .icon-btn .material-symbols-rounded { font-size:20px; display:block; line-height:1; }
+    .icon-btn:hover { background:var(--md-sys-color-surface-container-highest); }
+    .icon-btn.delete { color:var(--md-sys-color-error); }
+    .icon-btn.delete:hover { background:var(--md-sys-color-error-container); color:var(--md-sys-color-on-error-container); }
+    .icon-btn.restore { color:var(--md-sys-color-primary); }
+    .icon-btn.restore:hover { background:var(--md-sys-color-primary-container); color:var(--md-sys-color-on-primary-container); }
+
+    /* Trash type icon */
+    .trash-type-icon {
+      display:flex; align-items:center; justify-content:center;
+      width:32px; height:32px; border-radius:50%;
+      background: var(--md-sys-color-surface-container-highest);
+      color: var(--md-sys-color-on-surface-variant);
+      flex-shrink:0;
+      margin-right:8px;
+    }
+    .trash-type-icon .material-symbols-rounded { font-size:18px; }
+
+    /* Empty state */
+    .empty-state {
+      position: absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+      text-align:center; color:var(--md-sys-color-on-surface-variant);
+      display:flex; flex-direction:column; align-items:center; gap:12px;
+      user-select:none; pointer-events:none;
+    }
+    .empty-state span { font-size:4rem; color:var(--md-sys-color-outline-variant); }
+    .empty-state p { font-size:0.95rem; line-height:1.5; }
+
+    /* Todo */
+    .todo-view { display:flex; flex-direction:column; gap:10px; padding-bottom:80px; }
+    .todo-input-row {
+      display:flex; gap:10px; align-items:center;
+      background: var(--md-sys-color-surface-container);
+      border-radius:var(--md-sys-shape-corner-full);
+      padding:5px 5px 5px 20px; border:1px solid var(--md-sys-color-outline-variant);
+      box-shadow: var(--md-sys-elevation-1);
+      transition:all 0.2s cubic-bezier(0.2,0,0,1);
+    }
+    .todo-input-row:focus-within { border-color:var(--md-sys-color-primary); box-shadow: var(--md-sys-elevation-2); }
+    .todo-input-row input {
+      flex:1; border:none; background:transparent; font-size:0.95rem;
+      padding:10px 0; outline:none; color:var(--md-sys-color-on-surface);
+      font-family:inherit; font-weight:500; user-select:text;
+      enterkeyhint: "done";
+    }
+    .todo-input-row input::placeholder { color:var(--md-sys-color-outline); }
+    .todo-add-btn {
+      width:44px; height:44px; border-radius:50%; border:none;
+      background:var(--md-sys-color-primary); color:var(--md-sys-color-on-primary);
+      cursor:pointer; display:flex; align-items:center; justify-content:center;
+      transition:all 0.2s cubic-bezier(0.2,0,0,1); user-select:none;
+      flex-shrink:0; padding:0; line-height:0;
+    }
+    .todo-add-btn .material-symbols-rounded { font-size:22px; display:block; line-height:1; }
+    .todo-add-btn:hover { background:var(--md-sys-color-primary-container); color:var(--md-sys-color-on-primary-container); }
+    .todo-add-btn:active { transform:scale(0.9); }
+
+    .todo-list { display:flex; flex-direction:column; gap:8px; }
+    .todo-item {
+      display:flex; align-items:center; gap:12px;
+      background: var(--md-sys-color-surface-container);
+      border-radius:var(--md-sys-shape-corner-m); padding:13px 16px;
+      border:1px solid var(--md-sys-color-outline-variant);
+      box-shadow: var(--md-sys-elevation-1);
+      user-select:none;
+      transition:all 0.2s cubic-bezier(0.2,0,0,1);
+    }
+    .todo-item:hover { background:var(--md-sys-color-surface-container-high); }
+    .todo-item.completed .todo-text { text-decoration:line-through; color:var(--md-sys-color-outline); }
+    .todo-checkbox {
+      width:24px; height:24px; border-radius:50%;
+      border:2px solid var(--md-sys-color-outline); cursor:pointer; display:flex;
+      align-items:center; justify-content:center; transition:all 0.2s cubic-bezier(0.2,0,0,1);
+      flex-shrink:0; background:transparent; padding:0;
+    }
+    .todo-checkbox.checked { background:var(--md-sys-color-primary); border-color:var(--md-sys-color-primary); }
+    .todo-checkbox.checked .material-symbols-rounded { font-size:16px; color:var(--md-sys-color-on-primary); display:block; line-height:1; }
+    .todo-text, .todo-text-input {
+      flex:1; font-size:0.95rem; font-weight:500; color:var(--md-sys-color-on-surface); line-height:1.4;
+    }
+    .todo-text-input {
+      border:none; background:transparent; outline:none; font-family:inherit;
+      user-select:text; padding:0; margin:0;
+      border-bottom:1px dashed var(--md-sys-color-outline-variant);
+    }
+    .todo-delete-btn {
+      width:36px; height:36px; border-radius:50%; border:none; background:transparent;
+      cursor:pointer; display:flex; align-items:center; justify-content:center;
+      flex-shrink:0; padding:0; line-height:0;
+      opacity:1; /* Always visible */
+      transition:all 0.2s cubic-bezier(0.2,0,0,1);
+    }
+    .todo-delete-btn .material-symbols-rounded { font-size:18px; display:block; line-height:1; }
+    .todo-delete-btn:hover { background:var(--md-sys-color-error-container); color:var(--md-sys-color-on-error-container); }
+
+    /* Editor */
+    .editor-view { display:flex; flex-direction:column; height:100%; background:var(--md-sys-color-background); }
+    .editor-top-bar {
+      display:flex; align-items:center; gap:10px; padding:8px 12px;
+      background: var(--md-sys-color-surface-container-low);
+      border-bottom:1px solid var(--md-sys-color-outline-variant);
+      min-height:56px;
+    }
+    .editor-title-input {
+      flex:1; border:none; background:transparent; font-size:1.2rem; font-weight:600;
+      color:var(--md-sys-color-on-surface); outline:none; font-family:inherit;
+      user-select:text; line-height:1.3;
+    }
+    .editor-title-input::placeholder { color:var(--md-sys-color-outline); }
+    .editor-back-btn, .editor-save-btn {
+      width:44px; height:44px; border-radius:50%; border:none; background:transparent;
+      cursor:pointer; display:flex; align-items:center; justify-content:center;
+      color:var(--md-sys-color-on-surface); transition:all 0.2s cubic-bezier(0.2,0,0,1);
+      user-select:none; flex-shrink:0; padding:0; line-height:0;
+    }
+    .editor-back-btn .material-symbols-rounded, .editor-save-btn .material-symbols-rounded { font-size:22px; display:block; line-height:1; }
+    .editor-back-btn:hover, .editor-save-btn:hover { background:var(--md-sys-color-surface-container-high); }
+    .editor-back-btn:active, .editor-save-btn:active { transform:scale(0.9); }
+    .editor-body-area { flex:1; padding:16px; display:flex; flex-direction:column; }
+    .editor-textarea {
+      flex:1; width:100%; border:none; background:transparent; resize:none;
+      outline:none; font-size:1rem; font-family:inherit; color:var(--md-sys-color-on-surface);
+      line-height:1.75; padding:8px 4px; display:block;
+      user-select:text;
+    }
+    .editor-textarea::placeholder { color:var(--md-sys-color-outline); }
+    .editor-preview {
+      flex:1; overflow-y:auto; padding:8px 4px; line-height:1.75; color:var(--md-sys-color-on-surface);
+      display:none; font-size:1rem;
+      user-select:text;
+    }
+    /* Consistent preview spacing */
+    .editor-preview * { margin:0; }
+    .editor-preview strong { font-weight:600; color:var(--md-sys-color-primary); }
+    .editor-preview em { font-style:italic; }
+    .editor-preview code {
+      background:var(--md-sys-color-surface-container-high); padding:2px 8px;
+      border-radius:var(--md-sys-shape-corner-full); font-family:monospace; font-size:0.9em;
+      line-height:1.5;
+    }
+    .editor-preview a { color:var(--md-sys-color-primary); text-decoration:underline; }
+    .editor-preview ul, .editor-preview ol { padding-left:24px; margin:4px 0; }
+    .editor-preview li { margin:2px 0; line-height:1.6; }
+    .editor-preview h1 { font-size:1.6em; font-weight:700; color:var(--md-sys-color-primary); margin:12px 0 6px; line-height:1.3; }
+    .editor-preview h2 { font-size:1.3em; font-weight:600; color:var(--md-sys-color-secondary); margin:10px 0 5px; line-height:1.3; }
+    .editor-preview h3 { font-size:1.1em; font-weight:600; margin:8px 0 4px; line-height:1.3; }
+    .editor-preview p { margin:6px 0; line-height:1.75; }
+    .editor-preview br { display:block; content:""; margin:2px 0; }
+
+    /* FAB */
     .fab {
-      position: fixed; bottom: 32px; right: 32px;
-      width: 56px; height: 56px; background: var(--primary);
-      color: var(--on-primary); border: none; border-radius: 50%;
-      font-size: 1.5rem; cursor: pointer; box-shadow: var(--shadow);
-      transition: all var(--motion);
+      position:fixed; bottom:28px; right:28px; width:56px; height:56px;
+      border-radius:50%; border:none;
+      background:var(--md-sys-color-primary); color:var(--md-sys-color-on-primary);
+      cursor:pointer; box-shadow: var(--md-sys-elevation-4);
+      z-index:50; display:flex; align-items:center; justify-content:center;
+      transition:all 0.3s cubic-bezier(0.2,0,0,1);
+      user-select:none; padding:0; line-height:0;
     }
-    
-    .fab:hover { 
-      transform: scale(1.1); 
-      background: var(--primary-container);
-      color: var(--on-primary-container);
+    .fab .material-symbols-rounded { font-size:26px; display:block; line-height:1; }
+    .fab:hover { box-shadow: var(--md-sys-elevation-5); transform:translateY(-3px); }
+    .fab:active { transform:scale(0.9); transition:all 0.1s cubic-bezier(0.2,0,0,1); }
+    .fab.hidden { opacity:0; pointer-events:none; transform:scale(0.4) translateY(50px); }
+
+    /* Snackbar */
+    .snackbar {
+      position:fixed; bottom:24px; left:50%; transform:translateX(-50%) translateY(100px);
+      background: var(--md-sys-color-inverse-surface);
+      color: var(--md-sys-color-inverse-on-surface);
+      padding:14px 24px; border-radius:var(--md-sys-shape-corner-full);
+      font-size:0.9rem; z-index:200; pointer-events:none; opacity:0;
+      transition:all 0.35s cubic-bezier(0.05,0.7,0.1,1);
+      box-shadow: var(--md-sys-elevation-3);
+      white-space:nowrap;
+    }
+    .snackbar.show { transform:translateX(-50%) translateY(0); opacity:1; pointer-events:auto; }
+
+    /* Markdown help dialog */
+    .md-help-dialog {
+      position:fixed; top:50%; left:50%; transform:translate(-50%,-50%) scale(0.9);
+      background: var(--md-sys-color-surface-container-high);
+      border:1px solid var(--md-sys-color-outline-variant);
+      border-radius:var(--md-sys-shape-corner-l); padding:24px; max-width:360px; width:90%;
+      z-index:150; box-shadow: var(--md-sys-elevation-5);
+      opacity:0; pointer-events:none; transition:all 0.3s cubic-bezier(0.05,0.7,0.1,1);
+      user-select:none;
+    }
+    .md-help-dialog.open { opacity:1; pointer-events:auto; transform:translate(-50%,-50%) scale(1); }
+    .md-help-dialog h3 { margin-bottom:16px; color:var(--md-sys-color-primary); line-height:1.3; }
+    .md-help-dialog p { line-height:1.6; margin:4px 0; }
+    .md-help-dialog .close-btn {
+      position:absolute; top:12px; right:12px; width:36px; height:36px;
+      border-radius:50%; border:none; background:transparent; cursor:pointer;
+      display:flex; align-items:center; justify-content:center; color:var(--md-sys-color-on-surface);
+      padding:0; line-height:0;
     }
 
-    @media (max-width: 768px) { 
-      .fab { bottom: 16px; right: 16px; } 
-      .note-list { padding: 16px; } 
+    /* Material Symbols Rounded */
+    .material-symbols-rounded {
+      font-family: 'Material Symbols Rounded';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 24px;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      display: inline-block;
+      white-space: nowrap;
+      word-wrap: normal;
+      direction: ltr;
+      -webkit-font-smoothing: antialiased;
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+
+    @media (max-width: 600px) {
+      .top-bar { padding:8px 8px; }
+      .top-bar-title { font-size:1.2rem; }
+      .main-content { padding:10px 12px; }
+      .note-bar { padding:12px 16px; }
+      .fab { bottom:20px; right:20px; width:50px; height:50px; }
+      .fab .material-symbols-rounded { font-size:24px; }
+      .snackbar { max-width:90vw; white-space:normal; text-align:center; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
     }
   </style>
 </head>
-<body data-theme="dark">
+<body data-theme="light">
 
-  <!-- HOME -->
-  <div id="homeScreen">
-    <div class="home-header">Endroid Notes</div>
-    <button class="theme-toggle" id="themeToggle"><span class="material-icons">brightness_6</span></button>
-    <div class="note-list" id="noteList">
-      <div class="empty-state">
-        <div class="material-icons">note_add</div>
-        <div>No notes yet.<br>Tap + to create one.<br>Swipe left or click delete to remove</div>
+  <div class="scrim" id="scrim" aria-hidden="true"></div>
+
+  <nav class="drawer" id="drawer" aria-label="Side navigation">
+    <div class="drawer-header">
+      <div class="app-icon"><span class="material-symbols-rounded">note_stack</span></div>
+      <span class="app-title">Endroid Notes</span>
+    </div>
+    <div class="drawer-nav">
+      <button class="drawer-item active" data-view="notes" id="drawerNotes"><span class="material-symbols-rounded">lightbulb</span>Notes</button>
+      <button class="drawer-item" data-view="todo" id="drawerTodo"><span class="material-symbols-rounded">check_circle</span>To Do</button>
+      <button class="drawer-item" data-view="trash" id="drawerTrash"><span class="material-symbols-rounded">delete</span>Trash</button>
+    </div>
+  </nav>
+
+  <header class="top-bar" id="topBar">
+    <button class="menu-btn icon-circle" id="menuBtn" aria-label="Open menu"><span class="material-symbols-rounded">menu</span></button>
+    <span class="top-bar-title" id="topBarTitle">Endroid Notes</span>
+    <button class="info-btn icon-circle" id="infoBtn" aria-label="Markdown help"><span class="material-symbols-rounded">info</span></button>
+    <button class="theme-btn icon-circle" id="themeBtn" aria-label="Toggle theme"><span class="material-symbols-rounded">light_mode</span></button>
+  </header>
+
+  <main class="main-content" id="mainContent">
+    <div id="notesView" class="notes-list"></div>
+
+    <div id="todoView" class="todo-view" style="display:none;">
+      <div class="todo-input-row">
+        <input type="text" id="todoInput" placeholder="Add a task…" maxlength="200" enterkeyhint="done" aria-label="New task">
+        <button class="todo-add-btn" id="todoAddBtn" aria-label="Add task"><span class="material-symbols-rounded">add</span></button>
+      </div>
+      <div class="todo-list" id="todoList"></div>
+    </div>
+
+    <div id="editorView" class="editor-view" style="display:none;">
+      <div class="editor-top-bar">
+        <button class="editor-back-btn" id="editorBackBtn" aria-label="Go back"><span class="material-symbols-rounded">arrow_back</span></button>
+        <input type="text" class="editor-title-input" id="editorTitleInput" placeholder="Untitled Note" maxlength="120">
+        <button class="editor-save-btn" id="editorSaveBtn" aria-label="Save & preview"><span class="material-symbols-rounded">check</span></button>
+      </div>
+      <div class="editor-body-area">
+        <textarea class="editor-textarea" id="editorTextarea" placeholder="Start writing…"></textarea>
+        <div class="editor-preview" id="editorPreview"></div>
       </div>
     </div>
-    <button class="fab" id="addNoteBtn"><span class="material-icons">add</span></button>
-  </div>
+  </main>
 
-  <!-- EDITOR -->
-  <div id="editorScreen">
-    <div class="editor-header">
-      <button class="back-btn" id="backBtn"><span class="material-icons">arrow_back</span></button>
-      <input type="text" id="editorTitle" class="editor-title-input" placeholder="Untitled Note" />
-    </div>
-    <button class="theme-toggle" id="themeToggleEditor"><span class="material-icons">brightness_6</span></button>
-    <div class="editor-content">
-      <textarea id="noteInput" placeholder="Type your note here..."></textarea>
-      <div id="livePreview"></div>
-    </div>
+  <button class="fab" id="fabBtn" aria-label="Create new note"><span class="material-symbols-rounded">add</span></button>
+  <div class="snackbar" id="snackbar"></div>
+
+  <div class="md-help-dialog" id="mdHelpDialog" aria-hidden="true">
+    <button class="close-btn" id="mdHelpClose" aria-label="Close"><span class="material-symbols-rounded">close</span></button>
+    <h3>Markdown Quick Tips</h3>
+    <p><strong>**bold**</strong></p>
+    <p><em>*italic*</em></p>
+    <p><code>`code`</code></p>
+    <p># Heading 1</p>
+    <p>## Heading 2</p>
+    <p>- list item</p>
+    <p>URLs become links</p>
   </div>
 
   <script>
-    // DOM Elements
-    const homeScreen = document.getElementById('homeScreen');
-    const editorScreen = document.getElementById('editorScreen');
-    const noteList = document.getElementById('noteList');
-    const addBtn = document.getElementById('addNoteBtn');
-    const backBtn = document.getElementById('backBtn');
-    const editorTitle = document.getElementById('editorTitle');
-    const noteInput = document.getElementById('noteInput');
-    const livePreview = document.getElementById('livePreview');
-    const themeToggle = document.getElementById('themeToggle');
-    const themeToggleEditor = document.getElementById('themeToggleEditor');
+    (function() {
+      const scrim = document.getElementById('scrim');
+      const drawer = document.getElementById('drawer');
+      const menuBtn = document.getElementById('menuBtn');
+      const themeBtn = document.getElementById('themeBtn');
+      const topBar = document.getElementById('topBar');
+      const topBarTitle = document.getElementById('topBarTitle');
+      const mainContent = document.getElementById('mainContent');
+      const fabBtn = document.getElementById('fabBtn');
+      const snackbar = document.getElementById('snackbar');
+      const infoBtn = document.getElementById('infoBtn');
+      const mdHelpDialog = document.getElementById('mdHelpDialog');
+      const mdHelpClose = document.getElementById('mdHelpClose');
 
-    let notes = JSON.parse(localStorage.getItem('endroid-notes-v10')) || [];
-    let currentNoteId = null;
-    let touchStartX = 0;
-    let isSwiping = false;
+      const notesView = document.getElementById('notesView');
+      const todoView = document.getElementById('todoView');
+      const editorView = document.getElementById('editorView');
 
-    // Check if device is touch-enabled
-    const isTouchDevice = ('ontouchstart' in window) || 
-                         (navigator.maxTouchPoints > 0) || 
-                         (navigator.msMaxTouchPoints > 0);
+      const todoInput = document.getElementById('todoInput');
+      const todoAddBtn = document.getElementById('todoAddBtn');
+      const todoList = document.getElementById('todoList');
 
-    // Theme toggle
-    function toggleTheme() {
-      const isDark = document.body.dataset.theme === 'dark';
-      document.body.dataset.theme = isDark ? 'light' : 'dark';
-      localStorage.setItem('endroid-theme', document.body.dataset.theme);
-    }
-    themeToggle.addEventListener('click', toggleTheme);
-    themeToggleEditor.addEventListener('click', toggleTheme);
+      const editorTitleInput = document.getElementById('editorTitleInput');
+      const editorTextarea = document.getElementById('editorTextarea');
+      const editorPreview = document.getElementById('editorPreview');
+      const editorBackBtn = document.getElementById('editorBackBtn');
+      const editorSaveBtn = document.getElementById('editorSaveBtn');
 
-    const saved = localStorage.getItem('endroid-theme');
-    if (saved) document.body.dataset.theme = saved;
+      const drawerNotes = document.getElementById('drawerNotes');
+      const drawerTodo = document.getElementById('drawerTodo');
+      const drawerTrash = document.getElementById('drawerTrash');
 
-    // Update preview
-    function updatePreview() {
-      const text = noteInput.value;
-      livePreview.textContent = text;
-    }
+      let notes = JSON.parse(localStorage.getItem('endroid-notes-v15')) || [];
+      let todos = JSON.parse(localStorage.getItem('endroid-todos-v5')) || [];
+      // Unified trash: array of { type: 'note'|'todo', data: {...}, trashedAt: timestamp }
+      let trashItems = JSON.parse(localStorage.getItem('endroid-trash-v4')) || [];
+      let currentNoteId = null;
+      let currentView = 'notes';
+      let isDrawerOpen = false;
+      let snackbarTimer = null;
 
-    // Delete note function
-    function deleteNote(index, element) {
-      notes.splice(index, 1);
-      localStorage.setItem('endroid-notes-v10', JSON.stringify(notes));
-      if (element) {
-        element.style.transition = 'all 0.3s';
-        element.style.transform = 'translateX(-100%)';
-        element.style.opacity = '0';
-        setTimeout(() => renderHome(), 300);
+      // ---- Device sensor: auto-detect color scheme ----
+      const darkSchemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+      const savedTheme = localStorage.getItem('endroid-theme-v6');
+      if (savedTheme) {
+        document.body.dataset.theme = savedTheme;
       } else {
-        renderHome();
+        document.body.dataset.theme = darkSchemeQuery.matches ? 'dark' : 'light';
       }
-    }
-
-    // Render Home Screen
-    function renderHome() {
-      noteList.innerHTML = '';
-      
-      if (!notes.length) {
-        noteList.innerHTML = `<div class="empty-state"><div class="material-icons">note_add</div><div>No notes yet.<br>Tap + to create one.<br>Swipe left or click delete to remove</div></div>`;
-        return;
-      }
-
-      notes.forEach((note, i) => {
-        const item = document.createElement('div');
-        item.className = 'note-item';
-        
-        // Different structure for touch vs mouse
-        if (isTouchDevice) {
-          // Touch device: Swipe to delete
-          item.innerHTML = `
-            <div class="delete-bg"><span class="material-icons">delete</span></div>
-            <div class="note-content">
-              <div class="note-title">${note.title || 'Untitled'}</div>
-            </div>
-          `;
-        } else {
-          // Mouse/PC: Delete button
-          item.innerHTML = `
-            <div class="note-content" style="flex: 1;">
-              <div class="note-title">${note.title || 'Untitled'}</div>
-            </div>
-            <button class="delete-button" data-index="${i}" aria-label="Delete note">
-              <span class="material-icons">delete</span>
-            </button>
-          `;
+      darkSchemeQuery.addEventListener('change', (e) => {
+        if (!localStorage.getItem('endroid-theme-v6')) {
+          document.body.dataset.theme = e.matches ? 'dark' : 'light';
+          updateThemeIcon();
         }
+      });
+      updateThemeIcon();
 
-        const content = item.querySelector('.note-content');
-        
-        if (isTouchDevice) {
-          // Touch swipe logic
-          const bg = item.querySelector('.delete-bg');
+      function toggleTheme() {
+        document.body.dataset.theme = document.body.dataset.theme === 'light' ? 'dark' : 'light';
+        localStorage.setItem('endroid-theme-v6', document.body.dataset.theme);
+        updateThemeIcon();
+      }
+      themeBtn.addEventListener('click', toggleTheme);
+      function updateThemeIcon() {
+        themeBtn.querySelector('.material-symbols-rounded').textContent = document.body.dataset.theme === 'light' ? 'light_mode' : 'dark_mode';
+      }
 
-          content.addEventListener('touchstart', e => {
-            touchStartX = e.touches[0].clientX;
-            isSwiping = true;
-          });
+      // ---- Expressive tilt/parallax ----
+      let mouseX = 0, mouseY = 0;
+      document.addEventListener('mousemove', (e) => {
+        mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+        mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+      });
+      const styleSheet = document.createElement('style');
+      styleSheet.id = 'parallax-style';
+      document.head.appendChild(styleSheet);
+      function updateParallaxStyle() {
+        const tiltX = (mouseY * 3).toFixed(1);
+        const tiltY = (mouseX * 3).toFixed(1);
+        styleSheet.textContent = `
+          .note-bar:hover {
+            transform: translateY(-2px) perspective(600px) rotateX(${-tiltX}deg) rotateY(${tiltY}deg);
+          }
+        `;
+      }
+      let rafId;
+      function parallaxLoop() {
+        updateParallaxStyle();
+        rafId = requestAnimationFrame(parallaxLoop);
+      }
+      parallaxLoop();
 
-          content.addEventListener('touchmove', e => {
-            if (!isSwiping) return;
-            const diff = touchStartX - e.touches[0].clientX;
-            if (diff > 0) {
-              content.style.transform = `translateX(-${Math.min(diff, 120)}px)`;
-              bg.style.transform = `translateX(-${Math.min(diff, 120)}px)`;
-            }
-          });
+      // ---- Drawer ----
+      function openDrawer() { isDrawerOpen=true; drawer.classList.add('open'); scrim.classList.add('active'); document.body.style.overflow='hidden'; }
+      function closeDrawer() { isDrawerOpen=false; drawer.classList.remove('open'); scrim.classList.remove('active'); document.body.style.overflow=''; }
+      menuBtn.addEventListener('click', ()=> isDrawerOpen? closeDrawer() : openDrawer());
+      scrim.addEventListener('click', closeDrawer);
+      document.addEventListener('keydown', e=> { if(e.key==='Escape' && isDrawerOpen) closeDrawer(); });
 
-          content.addEventListener('touchend', (e) => {
-            const diff = touchStartX - (e.changedTouches?.[0]?.clientX || touchStartX);
-            if (diff > 80) {
-              deleteNote(i, item);
-            } else {
-              content.style.transform = '';
-              bg.style.transform = '';
-            }
-            isSwiping = false;
-          });
+      // ---- Markdown help ----
+      infoBtn.addEventListener('click', ()=> { mdHelpDialog.classList.add('open'); mdHelpDialog.setAttribute('aria-hidden','false'); });
+      mdHelpClose.addEventListener('click', ()=> { mdHelpDialog.classList.remove('open'); mdHelpDialog.setAttribute('aria-hidden','true'); });
+      mdHelpDialog.addEventListener('click', e=> { if(e.target===mdHelpDialog) mdHelpDialog.classList.remove('open'); });
+
+      // ---- Snackbar ----
+      function showSnackbar(msg) {
+        if(snackbarTimer) clearTimeout(snackbarTimer);
+        snackbar.textContent=msg; snackbar.classList.add('show');
+        snackbarTimer=setTimeout(()=> snackbar.classList.remove('show'),2500);
+      }
+
+      // ---- Navigation ----
+      function setActiveDrawerItem(view) {
+        drawerNotes.classList.toggle('active', view==='notes');
+        drawerTodo.classList.toggle('active', view==='todo');
+        drawerTrash.classList.toggle('active', view==='trash');
+      }
+
+      function navigateTo(view) {
+        if(currentView==='editor') saveNoteAndExit(true);
+        currentView=view;
+        setActiveDrawerItem(view);
+        closeDrawer();
+        updateUI();
+        if(view==='notes') renderNotes();
+        if(view==='todo') renderTodos();
+        if(view==='trash') renderTrash();
+        mainContent.scrollTop=0;
+      }
+
+      drawerNotes.addEventListener('click', ()=> navigateTo('notes'));
+      drawerTodo.addEventListener('click', ()=> navigateTo('todo'));
+      drawerTrash.addEventListener('click', ()=> navigateTo('trash'));
+
+      function updateUI() {
+        notesView.style.display = (currentView==='notes'||currentView==='trash') ? 'flex' : 'none';
+        todoView.style.display = currentView==='todo' ? 'flex' : 'none';
+        editorView.style.display = currentView==='editor' ? 'flex' : 'none';
+        topBarTitle.textContent = { notes:'Endroid Notes', todo:'To Do', trash:'Trash', editor:'Edit Note' }[currentView] || 'Endroid Notes';
+        fabBtn.classList.toggle('hidden', currentView==='editor'||currentView==='trash');
+        if(currentView==='todo') fabBtn.querySelector('.material-symbols-rounded').textContent = 'add_task';
+        else fabBtn.querySelector('.material-symbols-rounded').textContent = 'add';
+        document.body.classList.toggle('editor-mode', currentView==='editor');
+      }
+
+      function saveNotes() { localStorage.setItem('endroid-notes-v15',JSON.stringify(notes)); }
+      function saveTodos() { localStorage.setItem('endroid-todos-v5',JSON.stringify(todos)); }
+      function saveTrash() { localStorage.setItem('endroid-trash-v4',JSON.stringify(trashItems)); }
+
+      // ---- Notes rendering ----
+      function renderNotes() {
+        notesView.innerHTML='';
+        if(!notes.length) { notesView.innerHTML=`<div class="empty-state"><span class="material-symbols-rounded">note_add</span><p>No notes yet.<br>Tap + to create one.</p></div>`; return; }
+        notes.forEach((note,i)=>{
+          const bar = document.createElement('div'); bar.className='note-bar';
+          bar.innerHTML = `
+            <div class="bar-content">
+              <div class="bar-title">${escapeHTML(note.title||'Untitled')}</div>
+              <div class="bar-date">${note.updatedAt? new Date(note.updatedAt).toLocaleDateString('en-US',{month:'short',day:'numeric'}) : ''}</div>
+            </div>
+            <div class="bar-actions">
+              <button class="icon-btn delete" data-index="${i}" aria-label="Delete note"><span class="material-symbols-rounded">delete</span></button>
+            </div>`;
+          bar.addEventListener('click', e=> { if(!e.target.closest('button')) openEditor(i); });
+          bar.querySelector('.delete').addEventListener('click', e=> { e.stopPropagation(); moveNoteToTrash(i); });
+          notesView.appendChild(bar);
+        });
+      }
+
+      // ---- Trash rendering (unified) ----
+      function renderTrash() {
+        notesView.innerHTML='';
+        if(!trashItems.length) { notesView.innerHTML=`<div class="empty-state"><span class="material-symbols-rounded">delete</span><p>Trash is empty.</p></div>`; return; }
+        [...trashItems].reverse().forEach((item, revIdx) => {
+          const idx = trashItems.length - 1 - revIdx;
+          const bar = document.createElement('div'); bar.className='note-bar';
+          let iconName = item.type === 'note' ? 'note_stack' : 'check_circle';
+          let title = item.type === 'note' ? (item.data.title || 'Untitled') : item.data.text;
+          let dateStr = item.trashedAt ? new Date(item.trashedAt).toLocaleDateString('en-US',{month:'short',day:'numeric'}) : '';
+          bar.innerHTML = `
+            <div class="trash-type-icon"><span class="material-symbols-rounded">${iconName}</span></div>
+            <div class="bar-content">
+              <div class="bar-title">${escapeHTML(title)}</div>
+              <div class="bar-date">Trashed ${dateStr}</div>
+            </div>
+            <div class="bar-actions">
+              <button class="icon-btn restore" data-index="${idx}" aria-label="Restore"><span class="material-symbols-rounded">restore</span></button>
+              <button class="icon-btn delete" data-index="${idx}" aria-label="Delete forever"><span class="material-symbols-rounded">delete_forever</span></button>
+            </div>`;
+          bar.querySelector('.restore').addEventListener('click', e => { e.stopPropagation(); restoreFromTrash(idx); });
+          bar.querySelector('.delete').addEventListener('click', e => { e.stopPropagation(); permanentlyDelete(idx); });
+          notesView.appendChild(bar);
+        });
+      }
+
+      // ---- Trash operations ----
+      function moveNoteToTrash(i) {
+        const note = notes.splice(i,1)[0];
+        trashItems.push({ type: 'note', data: note, trashedAt: Date.now() });
+        saveNotes(); saveTrash();
+        renderNotes();
+        showSnackbar('Note moved to trash');
+      }
+
+      function moveTodoToTrash(i) {
+        const todo = todos.splice(i,1)[0];
+        trashItems.push({ type: 'todo', data: todo, trashedAt: Date.now() });
+        saveTodos(); saveTrash();
+        renderTodos();
+        showSnackbar('Task moved to trash');
+      }
+
+      function restoreFromTrash(i) {
+        const item = trashItems.splice(i,1)[0];
+        if (item.type === 'note') {
+          notes.push({...item.data, updatedAt: Date.now()});
+          saveNotes();
         } else {
-          // Mouse: Delete button click
-          const deleteBtn = item.querySelector('.delete-button');
+          todos.push(item.data);
+          saveTodos();
+        }
+        saveTrash();
+        renderTrash();
+        showSnackbar(`${item.type==='note'?'Note':'Task'} restored`);
+      }
+
+      function permanentlyDelete(i) {
+        trashItems.splice(i,1);
+        saveTrash();
+        renderTrash();
+        showSnackbar('Permanently deleted');
+      }
+
+      // ---- Editor ----
+      function openEditor(id) {
+        currentNoteId=id;
+        const note=notes[id];
+        editorTitleInput.value=note.title||'';
+        editorTextarea.value=note.content||'';
+        editorPreview.style.display='none';
+        editorTextarea.style.display='block';
+        currentView='editor';
+        updateUI();
+        editorTextarea.focus();
+      }
+
+      function saveNoteAndExit(silent=false) {
+        if(currentNoteId!==null && currentNoteId<notes.length) {
+          notes[currentNoteId]={ title:editorTitleInput.value.trim()||'Untitled', content:editorTextarea.value, updatedAt:Date.now(), createdAt:notes[currentNoteId].createdAt||Date.now() };
+          saveNotes();
+        }
+        currentNoteId=null;
+        editorTitleInput.value=''; editorTextarea.value=''; editorPreview.innerHTML='';
+        editorPreview.style.display='none'; editorTextarea.style.display='block';
+        currentView='notes'; updateUI(); setActiveDrawerItem('notes'); renderNotes();
+        if(!silent) showSnackbar('Note saved');
+      }
+
+      function togglePreview() {
+        if(currentNoteId===null) return;
+        notes[currentNoteId]={ title:editorTitleInput.value.trim()||'Untitled', content:editorTextarea.value, updatedAt:Date.now(), createdAt:notes[currentNoteId].createdAt||Date.now() };
+        saveNotes();
+        const text = editorTextarea.value;
+        if(!text.trim()) { showSnackbar('Nothing to preview'); return; }
+        editorPreview.innerHTML = simpleMarkdown(text);
+        editorTextarea.style.display='none';
+        editorPreview.style.display='block';
+        showSnackbar('Preview ready');
+      }
+
+      function exitPreview() {
+        editorPreview.style.display='none';
+        editorTextarea.style.display='block';
+        editorTextarea.focus();
+      }
+
+      editorSaveBtn.addEventListener('click', ()=>{
+        if(editorPreview.style.display==='block') exitPreview();
+        else togglePreview();
+      });
+      editorPreview.addEventListener('click', exitPreview);
+      editorBackBtn.addEventListener('click', ()=> saveNoteAndExit());
+
+      function simpleMarkdown(t) {
+        let html = escapeHTML(t);
+        html = html.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');
+        html = html.replace(/\*(.+?)\*/g,'<em>$1</em>');
+        html = html.replace(/`(.+?)`/g,'<code>$1</code>');
+        html = html.replace(/^### (.+)$/gm,'<h3>$1</h3>');
+        html = html.replace(/^## (.+)$/gm,'<h2>$1</h2>');
+        html = html.replace(/^# (.+)$/gm,'<h1>$1</h1>');
+        html = html.replace(/^- (.+)$/gm,'<li>$1</li>');
+        html = html.replace(/(<li>.*<\/li>\n?)+/g,'<ul>$&</ul>');
+        html = html.replace(/\n/g,'<br>');
+        html = html.replace(/(https?:\/\/[^\s<]+)/g,'<a href="$1" target="_blank" rel="noopener">$1</a>');
+        return html;
+      }
+
+      function escapeHTML(str) {
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+      }
+
+      // ---- Todos (with inline editing) ----
+      function renderTodos() {
+        todoList.innerHTML='';
+        if(!todos.length) { todoList.innerHTML='<div class="empty-state" style="position:static;transform:none;"><span class="material-symbols-rounded">checklist</span><p>No tasks yet.</p></div>'; return; }
+        todos.forEach((todo,i)=>{
+          const item = document.createElement('div'); item.className='todo-item'+(todo.completed?' completed':'');
+          item.innerHTML = `
+            <div class="todo-checkbox${todo.completed?' checked':''}" data-index="${i}">
+              ${todo.completed?'<span class="material-symbols-rounded">check</span>':''}
+            </div>
+            <span class="todo-text">${escapeHTML(todo.text)}</span>
+            <input type="text" class="todo-text-input" value="${escapeHTML(todo.text)}" style="display:none;" maxlength="200">
+            <button class="todo-delete-btn" data-index="${i}" aria-label="Delete"><span class="material-symbols-rounded">close</span></button>`;
+          
+          const checkbox = item.querySelector('.todo-checkbox');
+          const textSpan = item.querySelector('.todo-text');
+          const textInput = item.querySelector('.todo-text-input');
+          const deleteBtn = item.querySelector('.todo-delete-btn');
+
+          // Checkbox toggle
+          checkbox.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleTodo(i);
+          });
+
+          // Delete
           deleteBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            deleteNote(i, item);
+            moveTodoToTrash(i);
           });
-        }
 
-        // Tap to open (works for both)
-        content.addEventListener('click', (e) => {
-          if (isTouchDevice) {
-            if (Math.abs(touchStartX - (e.changedTouches?.[0]?.clientX || e.clientX)) < 10) {
-              openEditor(i);
+          // Click on text span -> inline edit
+          textSpan.addEventListener('click', (e) => {
+            e.stopPropagation();
+            startInlineEdit(i, textSpan, textInput);
+          });
+
+          // Inline edit handling
+          textInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+              e.preventDefault();
+              finishInlineEdit(i, textInput.value);
+              textInput.blur();
+            } else if (e.key === 'Escape') {
+              textInput.value = todos[i].text;
+              textInput.blur();
             }
-          } else {
-            openEditor(i);
-          }
+          });
+          textInput.addEventListener('blur', () => {
+            finishInlineEdit(i, textInput.value);
+          });
+
+          // Toggle on item click (but not when clicking checkbox/delete/text)
+          item.addEventListener('click', (e) => {
+            if (e.target.closest('.todo-checkbox') || e.target.closest('.todo-delete-btn') || e.target.closest('.todo-text-input') || e.target.closest('.todo-text')) return;
+            toggleTodo(i);
+          });
+
+          todoList.appendChild(item);
         });
-
-        noteList.appendChild(item);
-      });
-    }
-
-    // Open Editor
-    function openEditor(id) {
-      currentNoteId = id;
-      const note = notes[id];
-      editorTitle.value = note.title || '';
-      noteInput.value = note.content || '';
-      updatePreview();
-      homeScreen.style.display = 'none';
-      editorScreen.style.display = 'flex';
-    }
-
-    // Save and go back
-    function saveAndBack() {
-      if (currentNoteId !== null) {
-        notes[currentNoteId] = { 
-          title: editorTitle.value.trim() || 'Untitled', 
-          content: noteInput.value 
-        };
-        localStorage.setItem('endroid-notes-v10', JSON.stringify(notes));
       }
-      currentNoteId = null;
-      editorScreen.style.display = 'none';
-      homeScreen.style.display = 'flex';
-      renderHome();
-    }
 
-    // Event Listeners
-    addBtn.addEventListener('click', () => {
-      notes.push({ title: 'New Note', content: '' });
-      localStorage.setItem('endroid-notes-v10', JSON.stringify(notes));
-      openEditor(notes.length - 1);
-    });
-
-    backBtn.addEventListener('click', saveAndBack);
-    noteInput.addEventListener('input', updatePreview);
-    editorTitle.addEventListener('input', updatePreview);
-
-    // Keyboard shortcut: Save on Escape
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && editorScreen.style.display === 'flex') {
-        saveAndBack();
+      function startInlineEdit(index, textSpan, textInput) {
+        textSpan.style.display = 'none';
+        textInput.style.display = 'block';
+        textInput.focus();
+        textInput.setSelectionRange(textInput.value.length, textInput.value.length);
       }
-    });
 
-    // Initialize
-    renderHome();
+      function finishInlineEdit(index, newText) {
+        const trimmed = newText.trim();
+        if (trimmed && trimmed !== todos[index].text) {
+          todos[index].text = trimmed;
+          saveTodos();
+          showSnackbar('Task updated');
+        }
+        // Re-render to reflect changes and reset edit state
+        renderTodos();
+      }
 
-    // Service Worker Registration
-    if ("serviceWorker" in navigator) {
-      window.addEventListener("load", () => {
-        navigator.serviceWorker
-          .register("https://endroid.pages.dev/service-worker.js")
-          .then(() => console.log("Service Worker registered"))
-          .catch(err => console.error("SW registration failed:", err));
+      function addTodo() {
+        const text = todoInput.value.trim();
+        if(!text) return;
+        todos.unshift({text,completed:false,createdAt:Date.now()});
+        saveTodos(); todoInput.value=''; renderTodos(); todoInput.focus(); showSnackbar('Task added');
+      }
+      function toggleTodo(i) { todos[i].completed=!todos[i].completed; saveTodos(); renderTodos(); }
+
+      todoAddBtn.addEventListener('click', addTodo);
+      todoInput.addEventListener('keydown', e=> { if(e.key==='Enter'){ e.preventDefault(); addTodo(); } });
+
+      // ---- FAB ----
+      fabBtn.addEventListener('click', ()=>{
+        if(currentView==='todo') { todoInput.focus(); return; }
+        if(currentView==='trash') return;
+        notes.push({title:'New Note',content:'',createdAt:Date.now(),updatedAt:Date.now()});
+        saveNotes();
+        openEditor(notes.length-1);
       });
-    }
+
+      // ---- Init ----
+      function init() {
+        setActiveDrawerItem('notes');
+        updateUI();
+        renderNotes();
+      }
+      init();
+
+      mainContent.addEventListener('scroll', ()=> topBar.classList.toggle('scrolled', mainContent.scrollTop>4), {passive:true});
+
+      if("serviceWorker" in navigator) window.addEventListener("load", ()=> navigator.serviceWorker.register("/Notes/service-worker.js"));
+    })();
   </script>
-
 </body>
-      </html>
+</html>
